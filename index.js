@@ -1,3 +1,10 @@
+require('dotenv').config();
+
+const apiKey = process.env.PLAID_API_KEY;
+
+
+
+
 // Dad joke API 
 (
     async () => {
