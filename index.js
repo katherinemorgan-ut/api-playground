@@ -1,35 +1,50 @@
 require('dotenv').config();
 
-const apiKey = process.env.PLAID_API_KEY;
 
-
-
-
-// Dad joke API 
+// Predict age from name
 (
     async () => {
-        const url = 'https://icanhazdadjoke.com/';
+        const url = 'https://api.agify.io';
 
         //JSON response
-        const response = await fetch(url, {
-            headers: {
-                'User-Agent':'My Library (https://github.com/katherinemorgan-ut/api-playground)',
-                'accept': 'application/json',
-            },
+        const response = await fetch(url + "?" + new URLSearchParams({
+            name: 'katherine',
         })
+        );
 
-        const dadJoke = await response.json();
-        console.log(dadJoke.joke);
+        const data = await response.json();
 
-        //Plain Text repsonse
-        // const responsePlainText = await fetch(url, {
-        //     headers: {
-        //         'User-Agent':'My Library (https://github.com/katherinemorgan-ut/api-playground)',
-        //         'accept': 'text/html',
-        //     }
-        // })
+        console.log("'Katherine' is predicted to be " + data.age);
 
-        // const secondDadJoke = response.body;
-        // console.log(secondDadJoke);
     }
-)();
+) ();
+
+
+// // Dad joke API 
+// (
+//     async () => {
+//         const url = 'https://icanhazdadjoke.com/';
+
+//         //JSON response
+//         const response = await fetch(url, {
+//             headers: {
+//                 'User-Agent':'My Library (https://github.com/katherinemorgan-ut/api-playground)',
+//                 'accept': 'application/json',
+//             },
+//         })
+
+//         const dadJoke = await response.json();
+//         console.log(dadJoke.joke);
+
+//         //Plain Text repsonse
+//         // const responsePlainText = await fetch(url, {
+//         //     headers: {
+//         //         'User-Agent':'My Library (https://github.com/katherinemorgan-ut/api-playground)',
+//         //         'accept': 'text/html',
+//         //     }
+//         // })
+
+//         // const secondDadJoke = response.body;
+//         // console.log(secondDadJoke);
+//     }
+// )();
